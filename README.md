@@ -1,16 +1,97 @@
-# React + Vite
+# User Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a professional, modern User Management System built with React, Vite, and Tailwind CSS. It provides a responsive interface for viewing, searching, and sorting users, with a clean codebase suitable for assignments, learning, or as a foundation for production apps.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+- **User Dashboard:** Displays a list of users fetched from a public API
+- **User Details Page:** View detailed information for each user
+- **Search & Sort:** Filter users by name or email and sort alphabetically
+- **Responsive Design:** Mobile-friendly and fully responsive using Tailwind CSS
+- **Skeleton Loader:** Elegant loading state for improved UX
+- **Reusable Components:** Modular structure for easy maintenance and extension
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Router DOM](https://reactrouter.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+
+---
+
+## 📁 Folder Structure
+
+```
+src/
+  components/   # Reusable UI components (Navbar, UserCard, SkeletonLoader, etc.)
+  pages/        # Main pages (Dashboard, UserDetails)
+  utils/        # Utility functions
+public/         # Static assets
+```
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher recommended)
+- npm
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone <repo-url>
+   cd frontend
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+4. **Open your browser:**
+   Visit [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 📝 Usage
+
+- On the dashboard, view all users, search by name/email, and sort alphabetically.
+- Click a user to view detailed information.
+- The app is fully responsive and works on all modern devices.
+
+---
+
+## 📌 Notes
+
+- This project is developed as part of an assignment and demonstrates best practices in React and Tailwind CSS.
+- All user data is fetched from [JSONPlaceholder](https://jsonplaceholder.typicode.com/users).
+- No backend or TypeScript is included, but the codebase is easily extendable.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request for any improvements.
+
+---
+
+## 📄 License
+
+This project is intended for educational and assignment purposes only.
+
+---
+
+## 📬 Contact
+
+For any questions or feedback, please contact the project maintainer.
