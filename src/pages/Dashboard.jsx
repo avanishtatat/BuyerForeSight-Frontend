@@ -4,26 +4,9 @@ import ErrorState from '../components/ErrorState';
 import SearchAndFilters from '../components/SearchAndFilters'
 import UserCard from '../components/UserCard';
 import SkeletonLoader from '../components/SkeletonLoader';
+import { sortUsers } from '../utils/helper';
 
-const sortUsers = (users, sortOrder) => {
-  return [...users].sort((a, b) => {
-    const nameCompare = sortOrder === 'asc'
-      ? a.name.localeCompare(b.name)
-      : b.name.localeCompare(a.name);
 
-    if (nameCompare !== 0) {
-      return nameCompare;
-    }
-
-    if (a.company && b.company) {
-      return sortOrder === 'asc'
-        ? a.company.name.localeCompare(b.company.name)
-        : b.company.name.localeCompare(a.company.name);
-    }
-
-    return 0;
-  });
-};
 
 const Dashboard = () => {
   const [users, setUsers] = useState([]);

@@ -1,97 +1,140 @@
 # User Management System
 
-This project is a professional, modern User Management System built with React, Vite, and Tailwind CSS. It provides a responsive interface for viewing, searching, and sorting users, with a clean codebase suitable for assignments, learning, or as a foundation for production apps.
+A responsive React application for browsing and viewing user records. The project is built as an assignment submission and focuses on clean component structure, practical state handling, and a polished user experience using Tailwind CSS.
 
----
+## Project Overview
 
-## 🚀 Features
+This application fetches user data from the JSONPlaceholder API and presents it through two primary views:
 
-- **User Dashboard:** Displays a list of users fetched from a public API
-- **User Details Page:** View detailed information for each user
-- **Search & Sort:** Filter users by name or email and sort alphabetically
-- **Responsive Design:** Mobile-friendly and fully responsive using Tailwind CSS
-- **Skeleton Loader:** Elegant loading state for improved UX
-- **Reusable Components:** Modular structure for easy maintenance and extension
+- A dashboard for browsing, searching, and sorting users
+- A user details page for viewing extended profile information
 
----
+The interface also includes dedicated loading, empty, and error states so the application remains usable across common API scenarios.
 
-## 🛠️ Tech Stack
+## Core Features
 
-- [React](https://react.dev/)
-- [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [React Router DOM](https://reactrouter.com/)
-- [React Icons](https://react-icons.github.io/react-icons/)
+- Dashboard with user cards rendered from live API data
+- Real-time search by user name or email
+- Alphabetical sorting with ascending and descending order
+- User details page with profile, address, and company information
+- Skeleton loading UI while data is being fetched
+- Empty-state UI when no users match the current filter
+- Error-state UI with retry support for failed requests
+- Responsive layout for desktop and mobile screens
 
----
+## Tech Stack
 
-## 📁 Folder Structure
+- React
+- Vite
+- Tailwind CSS
+- React Router DOM
+- React Icons
 
+## API Source
+
+User data is fetched from JSONPlaceholder:
+
+- `https://jsonplaceholder.typicode.com/users`
+- `https://jsonplaceholder.typicode.com/users/:id`
+
+## Application Routes
+
+- `/` - Dashboard page showing the user directory
+- `/users/:userId` - User details page
+
+## Project Structure
+
+```text
+frontend/
+   public/
+      favicon.svg
+      icons.svg
+   src/
+      assets/
+      components/
+         EmptyState.jsx
+         ErrorState.jsx
+         Navbar.jsx
+         SearchAndFilters.jsx
+         SkeletonLoader.jsx
+         UserCard.jsx
+      pages/
+         Dashboard.jsx
+         UserDetails.jsx
+      utils/
+         helper.js
+      App.jsx
+      index.css
+      main.jsx
+   eslint.config.js
+   index.html
+   package.json
+   README.md
+   vite.config.js
 ```
-src/
-  components/   # Reusable UI components (Navbar, UserCard, SkeletonLoader, etc.)
-  pages/        # Main pages (Dashboard, UserDetails)
-  utils/        # Utility functions
-public/         # Static assets
-```
 
----
-
-## ⚙️ Getting Started
+## Installation
 
 ### Prerequisites
 
-- Node.js (v18 or higher recommended)
+- Node.js 18 or later
 - npm
 
-### Installation
+### Steps
 
-1. **Clone the repository:**
-   ```bash
-   git clone <repo-url>
-   cd frontend
-   ```
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-3. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
-4. **Open your browser:**
-   Visit [http://localhost:5173](http://localhost:5173)
+1. Install dependencies:
 
----
+```bash
+npm install
+```
 
-## 📝 Usage
+2. Start the development server:
 
-- On the dashboard, view all users, search by name/email, and sort alphabetically.
-- Click a user to view detailed information.
-- The app is fully responsive and works on all modern devices.
+```bash
+npm run dev
+```
 
----
+3. Open the local development URL shown in the terminal, typically:
 
-## 📌 Notes
+```text
+http://localhost:5173
+```
 
-- This project is developed as part of an assignment and demonstrates best practices in React and Tailwind CSS.
-- All user data is fetched from [JSONPlaceholder](https://jsonplaceholder.typicode.com/users).
-- No backend or TypeScript is included, but the codebase is easily extendable.
+## Available Scripts
 
----
+```bash
+npm run dev      # Start the Vite development server
+npm run build    # Create a production build
+npm run preview  # Preview the production build locally
+npm run lint     # Run ESLint
+```
 
-## 🤝 Contributing
+## Implementation Notes
 
-Contributions are welcome! Please fork the repository and submit a pull request for any improvements.
+- Routing is handled with React Router.
+- Styling is implemented with Tailwind CSS v4.
+- User list sorting is handled on the client side.
+- Search filtering updates the rendered list in real time.
+- Reusable fallback components are used for loading, empty, and error states.
 
----
+## Assignment Scope
 
-## 📄 License
+This project was created as an assignment to demonstrate:
 
-This project is intended for educational and assignment purposes only.
+- Component-based UI development with React
+- Client-side data fetching and rendering
+- State management using React hooks
+- Responsive frontend design
+- Clean project structure and reusable UI patterns
 
----
+## Future Improvements
 
-## 📬 Contact
+- Add unit and integration tests
+- Add pagination or virtualization for larger datasets
+- Add toast notifications for API events
+- Add edit and delete actions with a backend service
+- Improve accessibility with keyboard navigation and ARIA refinements
 
-For any questions or feedback, please contact the project maintainer.
+## License
+
+This repository is intended for educational and assignment use.
