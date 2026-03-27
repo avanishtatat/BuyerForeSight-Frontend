@@ -127,6 +127,37 @@ This project was created as an assignment to demonstrate:
 - Responsive frontend design
 - Clean project structure and reusable UI patterns
 
+## Deployment on Vercel
+
+This project is deployed as a Single Page Application (SPA) on Vercel.
+
+### Why `vercel.json` is needed
+
+The app uses React Router with `BrowserRouter`. Routes like `/users/3` only exist client-side. Without a rewrite rule, Vercel tries to find a real file at that path on the server and returns a `404` on page refresh or direct navigation.
+
+The `vercel.json` at the root of the project fixes this by redirecting all requests back to `index.html`, letting React Router handle the route:
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
+
+### Steps to deploy
+
+1. Push the project to a GitHub repository.
+2. Import the repository on [vercel.com](https://vercel.com).
+3. Set the framework preset to **Vite**.
+4. Vercel will auto-detect the build command (`npm run build`) and output directory (`dist`).
+5. Click **Deploy**.
+
+The `vercel.json` rewrite is picked up automatically and all routes will work correctly on refresh.
+
 ## Future Improvements
 
 - Add unit and integration tests
