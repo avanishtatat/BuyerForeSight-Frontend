@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import ErrorState from '../components/ErrorState';
 import { LuSquareArrowOutUpRight, LuUser } from 'react-icons/lu';
 import { MdOutlineLocationOn } from 'react-icons/md';
 import { PiBuildingOffice } from 'react-icons/pi';
@@ -8,28 +9,61 @@ const UserDetails = () => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [reloadKey, setReloadKey] = useState(0);
   const { userId } = useParams();
 
   useEffect(() => {
-    try {
-      const getUser = async () => {
+    const getUser = async () => {
+      setLoading(true);
+      try {
         const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch user details.');
+        }
+
         const data = await response.json();
+
+        if (!data?.id) {
+          throw new Error('User details are unavailable.');
+        }
+
         setUser(data);
         setError(null);
+      } catch (error) {
+        console.error('Error:', error)
+        setError(error);
+        setUser(null);
+      } finally {
+        setLoading(false);
       }
-      getUser();
-      return () => { };
-    } catch (error) {
-      console.error('Error:', error)
-      setError(error);
-    }
-  }, []);
+    };
+
+    getUser();
+
+    return () => { };
+  }, [userId, reloadKey]);
+
+  const handleRetry = () => {
+    setReloadKey((currentKey) => currentKey + 1);
+  };
+
+  if (error) {
+    return (
+      <div className='h-[calc(100vh-64px)] overflow-y-auto py-6'>
+        <ErrorState
+          title='Unable to load user details'
+          message={error.message || 'An unexpected error occurred while fetching the user details.'}
+          onRetry={handleRetry}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className='h-[calc(100vh-64px)] overflow-y-auto'>
       <div className='w-11/12 mx-auto mt-6 flex items-center justify-between'>
-        <h1 className='text-[#2A3439] text-3xl font-semibold'>{user?.name ? user.name : "Loading..."}</h1>
+        <h1 className='text-[#2A3439] text-3xl font-semibold'>{loading ? 'Loading...' : user?.name}</h1>
         <button className='bg-[#4D44E3] text-white border-none outline-none text-[13px] p-2 rounded-sm font-semibold' disabled>Edit User Info</button>
       </div>
       <div className='w-11/12 mx-auto mt-6 grid gird-cols-1 md:grid-cols-2 gap-3'>
